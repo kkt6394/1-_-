@@ -2,33 +2,45 @@
 
 class Calculator {
     func add(_ a: Int, _ b: Int) -> Int {
+        return AddOperation().add(a, b)
+    }
+    func subtract(_ a: Int, _ b: Int) -> Int {
+        return SubtractOperation().subtract(a, b)
+    }
+    func multiply(_ a: Int, _ b: Int) -> Int {
+        return MultiplyOperation().multiply(a, b)
+    }
+    func divide(_ a: Int, _ b: Int) -> Int {
+        return DivideOperation().divide(a, b)
+    }
+    func reminder(_ a: Int, _ b: Int) -> Int {
+        return ReminderOperation().reminder(a, b)
+    }
+}
+
+class AddOperation {
+    func add(_ a: Int, _ b: Int) -> Int {
         return a + b
     }
+}
+class SubtractOperation {
     func subtract(_ a: Int, _ b: Int) -> Int {
         return a - b
     }
+}
+class MultiplyOperation {
     func multiply(_ a: Int, _ b: Int) -> Int {
         return a * b
     }
+}
+class DivideOperation {
     func divide(_ a: Int, _ b: Int) -> Int {
-        if b == 0 {
-            return 0
-        } else {
-            return a / b
-        }
-    }
-    func reminder(_ a: Int, _ b: Int) -> Int {
-        if b == 0 {
-            return 0
-        } else {
-            return a % b
-        }
+        return b != 0 ? a / b : 0
     }
 }
-let calculator = Calculator()
+class ReminderOperation {
+    func reminder(_ a: Int, _ b: Int) -> Int {
+        return b != 0 ? a % b : 0
+    }
+}
 
-print(calculator.add(10, 20))
-print(calculator.subtract(10, 20))
-print(calculator.multiply(10, 20))
-print(calculator.divide(60, 30))
-print(calculator.reminder(10, 0))
