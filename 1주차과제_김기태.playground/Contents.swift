@@ -1,49 +1,53 @@
 // START!!
 
+protocol AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int
+}
 class Calculator {
-    func add(_ a: Int, _ b: Int) -> Int {
-        return AddOperation().add(a, b)
-    }
-    func subtract(_ a: Int, _ b: Int) -> Int {
-        return SubtractOperation().subtract(a, b)
-    }
-    func multiply(_ a: Int, _ b: Int) -> Int {
-        return MultiplyOperation().multiply(a, b)
-    }
-    func divide(_ a: Int, _ b: Int) -> Int {
-        return DivideOperation().divide(a, b)
-    }
-    func reminder(_ a: Int, _ b: Int) -> Int {
-        return ReminderOperation().reminder(a, b)
+    func calculate(_ a: Int, _ b: Int, with operation: AbstractOperation) -> Int {
+        return operation.operate(a, b)
     }
 }
 
-class AddOperation {
-    func add(_ a: Int, _ b: Int) -> Int {
+class AddOperation: AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int {
         return a + b
     }
 }
-class SubtractOperation {
-    func subtract(_ a: Int, _ b: Int) -> Int {
+class SubtractOperation: AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int {
         return a - b
     }
 }
-class MultiplyOperation {
-    func multiply(_ a: Int, _ b: Int) -> Int {
+class MultiplyOperation: AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int {
         return a * b
     }
 }
-class DivideOperation {
-    func divide(_ a: Int, _ b: Int) -> Int {
+class DivideOperation: AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int {
         return b != 0 ? a / b : 0
     }
 <<<<<<< HEAD
 =======
 }
-class ReminderOperation {
->>>>>>> level3
-    func reminder(_ a: Int, _ b: Int) -> Int {
+class ReminderOperation: AbstractOperation {
+    func operate(_ a: Int, _ b: Int) -> Int {
         return b != 0 ? a % b : 0
     }
 }
+
+let calculator = Calculator()
+
+let addOp = AddOperation()
+let subtractOp = SubtractOperation()
+let multiplyOp = MultiplyOperation()
+let divideOp = DivideOperation()
+let reminderOp = ReminderOperation()
+
+print(calculator.calculate(10, 20, with: addOp)) 
+print(calculator.calculate(10, 20, with: subtractOp)) 
+print(calculator.calculate(10, 20, with: multiplyOp)) 
+print(calculator.calculate(10, 20, with: divideOp))
+print(calculator.calculate(10, 20, with: reminderOp))
 
