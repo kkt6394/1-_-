@@ -28,8 +28,7 @@ class DivideOperation: AbstractOperation {
     func operate(_ a: Int, _ b: Int) -> Int {
         return b != 0 ? a / b : 0
     }
-<<<<<<< HEAD
-=======
+
 }
 class ReminderOperation: AbstractOperation {
     func operate(_ a: Int, _ b: Int) -> Int {
