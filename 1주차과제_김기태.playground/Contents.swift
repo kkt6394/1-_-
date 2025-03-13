@@ -11,18 +11,10 @@ class Calculator {
         return a * b
     }
     func divide(_ a: Int, _ b: Int) -> Int {
-        if b == 0 {
-            return 0
-        } else {
-            return a / b
-        }
+        return b != 0 ? a / b : 0
     }
     func reminder(_ a: Int, _ b: Int) -> Int {
-        if b == 0 {
-            return 0
-        } else {
-            return a % b
-        }
+        return b != 0 ? a % b : 0
     }
 }
 let calculator = Calculator()
